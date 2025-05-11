@@ -6,7 +6,7 @@ import "./Register.scss";
 import axios from "axios";
 
 
-const base_url = "https://matbus-backend.onrender.com"
+const base_url = "https://matbus-backend.onrender.com/"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -114,42 +114,49 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    try {
-      const response = await axios(
-        `${base_url}/api/admin/register`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (response.ok) {
-        toast.success("Administrator account created successfully!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          onClose: () => navigate("/login"),
-        });
-
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
-      } else {
-        const data = await response.json();
-        toast.error(data.message || "Registration failed");
+  try {
+    const response = await axios.post(
+      `${base_url}/api/admin/register`,
+      formData,
+      {
+        headers: { "Content-Type": "application/json" },
       }
-    } catch (err) {
-      toast.error("Network error. Please try again later.");
+    );
+
+    if (response.status === 200 || response.status === 201) {
+      toast.success("Administrator account created successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        onClose: () => navigate("/login"),
+      });
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    } else {
+      toast.error(response.data.message || "Registration failed");
     }
-  };
+  } catch (err) {
+    if (err.response) {
+      // The request was made and the server responded with a status code
+      toast.error(err.response.data.message || "Registration failed");
+    } else if (err.request) {
+      // The request was made but no response was received
+      toast.error("No response from server. Please try again later.");
+    } else {
+      // Something happened in setting up the request
+      toast.error("Request error. Please try again.");
+    }
+  }
+};
 
   // Real-time validation as user types
   const handleBlur = (e) => {
