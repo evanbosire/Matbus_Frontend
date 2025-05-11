@@ -1,69 +1,115 @@
 .pending-container {
-  margin-top: 80px;
   min-height: 100vh;
   width: 100%;
-  background-color: #fff;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Page Title */
 .title {
-  color: rgb(171, 25, 204);
-  margin-left: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.search-bar {
+  color: #ab19cc;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
   margin-bottom: 20px;
-  margin-left: 10px;
+  letter-spacing: 1px;
 }
 
-input {
-  padding: 10px;
+/* Search Bar */
+.search-bar {
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 16px;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease;
 }
 
-/* Add styles for the loader container */
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar input:focus {
+  border: 1px solid #ab19cc;
+}
+
+/* Loader Container */
 .loaderContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* Ensure it covers the full height of the viewport */
 }
 
 .loadingMessage {
-  margin-top: 10px;
-  font-size: 20px;
+  margin-top: 12px;
+  font-size: 18px;
   color: #3498db;
 }
 
-.pending-container {
-  margin-top: 80px;
-  min-height: 100vh;
+/* Table Custom Styles */
+table {
   width: 100%;
-  background-color: #fff;
+  max-width: 1000px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.title {
-  color: rgb(171, 25, 204);
-  margin-left: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 10px;
+thead {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.search-bar {
-  margin-bottom: 20px;
-  margin-left: 10px;
+th, td {
+  padding: 14px 18px;
+  color: #fff;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+th {
+  font-weight: 600;
+  color: #ff9100;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease-in-out;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  th, td {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .search-bar {
+    width: 90%;
+  }
 }

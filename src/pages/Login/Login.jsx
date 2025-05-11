@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.scss";
-import logo from "../../assets/images/logo.png"; // Import the logo
-
 
 const base_url = "https://matbus-backend.onrender.com"
 
@@ -107,7 +105,7 @@ const Login = () => {
       <div className="login-card">
         <div className="login-header">
           <div className="logo-container">
-            <img src={logo} alt="Logo" className="logo-image" />
+            <div className="logo-circle"></div>
             <h1>Login</h1>
           </div>
           <p className="subtitle">Welcome back administrator</p>
@@ -124,6 +122,7 @@ const Login = () => {
               placeholder="Email"
               className="form-input"
             />
+            <div className="input-highlight"></div>
           </div>
 
           <div className="form-group">
@@ -136,6 +135,7 @@ const Login = () => {
               placeholder="Password (4-6 characters)"
               className="form-input"
             />
+            <div className="input-highlight"></div>
           </div>
 
           <button type="submit" className="submit-btn">

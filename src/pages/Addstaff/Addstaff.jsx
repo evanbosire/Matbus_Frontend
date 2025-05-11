@@ -57,10 +57,12 @@ const roles = [
   "Inventory manager",
   "Finance manager",
   "Service manager",
-  "Supervisor",
+  "Trainer",
   "Supplier",
-  "Gym Coach",
-  "Nutritionist",
+  "Mentor",
+  "Community Service Coordinator ",
+  "Duties manager ",
+  "Donor"
 ];
 
 const EmployeeForm = () => {

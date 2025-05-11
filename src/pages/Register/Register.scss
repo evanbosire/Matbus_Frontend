@@ -1,74 +1,17 @@
-// /* Register.css */
-// .register-page {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-//   /* Full viewport height */
-//   background-color: #f8f9fa;
-//   /* Optional: light background color for contrast */
-// }
-
-// .register-form-container {
-//   width: 100%;
-//   max-width: 600px;
-//   /* Adjust as needed */
-//   margin-top: 50px;
-//   /* Margin from the top */
-// }
-
-// .card {
-//   background-color: white;
-//   /* Background color for the card */
-//   border: 1px solid #ddd;
-//   /* Optional: border for the card */
-//   border-radius: 8px;
-//   /* Optional: rounded corners */
-//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//   /* Optional: shadow for the card */
-// }
-
-// .card-header,
-// .card-body,
-// .card-footer {
-//   margin: 0;
-//   padding: 20px;
-//   /* Adjust padding as needed */
-// }
-
-// .form-group {
-//   margin-bottom: 15px;
-//   /* Space between form fields */
-// }
-
-// .btn-primary,
-// .btn-danger {
-//   margin-right: 5px;
-//   /* Space between buttons */
-// }
-
-// .colors {
-//   color: #fff !important;
-// }
-
-// .navbar-logo {
-//   width: 120px;
-//   /* Adjust the width as needed */
-//   height: auto;
-//   /* Maintain aspect ratio */
-//   margin-right: 10px;
-//   /* Add some spacing between the logo and text */
-// }
 :root {
-  --primary-color: #6366f1;
-  --primary-dark: #4338ca;
-  --background-start: #1e1e2e;
-  --background-end: #2d2d44;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --input-bg: rgba(255, 255, 255, 0.08);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
+  --primary-color: #22c55e;
+  --primary-light: #4ade80;
+  --primary-dark: #16a34a;
+  --background-color: #0f172a; // Dark slate blue background
+  --card-bg: #1e293b; // Darker card background
+  --input-bg: #334155; // Dark input background
+  --input-border: #475569;
+  --text-primary: #f8fafc; // Light text for dark mode
+  --text-secondary: #94a3b8;
+  --accent-color: #0ea5e9;
   --error-color: #ef4444;
+  --success-color: #10b981;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
 .signup-container {
@@ -76,18 +19,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--background-start), var(--background-end));
+  padding: 1.5rem;
+  background-color: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 25% 15%, rgba(34, 197, 94, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 75% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 30%),
+    linear-gradient(to bottom right, #0f172a, #1e293b);
 }
 
 .signup-card {
   width: 100%;
-  max-width: 480px;
+  max-width: 500px;
   background: var(--card-bg);
-  border-radius: 24px;
+  border-radius: 16px;
   padding: 2.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+  }
 }
 
 .signup-header {
@@ -96,33 +50,42 @@
 }
 
 .logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1.5rem;
 }
 
 .logo-circle {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  border-radius: 50%;
-  margin: 0 auto 1rem;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
   position: relative;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 32px -4px rgba(22, 163, 74, 0.4);
+  transition: all 0.3s ease;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    transition: all 0.3s ease;
   }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
+  
+  &:hover {
+    box-shadow: 0 12px 40px -4px rgba(22, 163, 74, 0.5);
+    
+    &::before {
+      transform: scale(0.95);
+    }
   }
 }
 
@@ -131,11 +94,13 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
   color: var(--text-secondary);
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 .signup-form {
@@ -150,67 +115,176 @@
 
 .form-input {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   background: var(--input-bg);
-  border: none;
-  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
   color: var(--text-primary);
   font-size: 1rem;
   transition: all 0.3s ease;
-}
-
-.form-input::placeholder {
-  color: var(--text-secondary);
-}
-
-.form-input:focus {
-  outline: none;
-  background: var(--input-bg);
-  box-shadow: 0 0 0 2px var(--primary-color);
+  
+  &::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    background: lighten($color: #334155, $amount: 5%);
+  }
 }
 
 .input-highlight {
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 0;
   width: 0;
-  height: 2px;
+  height: 3px;
   background: var(--primary-color);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+  transition: all 0.4s ease;
+  opacity: 0;
+  border-radius: 0 0 3px 3px;
 }
 
-.form-input:focus~.input-highlight {
+.form-input:focus ~ .input-highlight {
   width: 100%;
+  opacity: 1;
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
   color: white;
-  padding: 1rem;
+  padding: 1.1rem;
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: 0.6s;
+  }
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -5px rgba(22, 163, 74, 0.4);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -10px var(--primary-color);
+.login-link {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.link {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.4rem;
+  transition: all 0.2s ease;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-light);
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    color: white;
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Toast notification customizations
+.Toastify__toast {
+  border-radius: 10px !important;
+  font-family: inherit !important;
+}
+
+.Toastify__toast--success {
+  background: var(--success-color) !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+.Toastify__toast--error {
+  background: var(--error-color) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+.logo-circle {
+  animation: float 4s ease-in-out infinite;
 }
 
 @media (max-width: 480px) {
   .signup-card {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
-
+  
   .signup-header h1 {
     font-size: 1.75rem;
   }
-
+  
   .form-input {
-    padding: 0.875rem;
+    padding: 0.9rem 1.1rem;
+  }
+  
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .submit-btn {
+    padding: 1rem;
   }
 }
