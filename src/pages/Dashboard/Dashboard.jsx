@@ -79,7 +79,7 @@ function Dashboard() {
           <div className="main-cards">
             <div className="card">
               <div className="card-inner">
-                <h3>PENDING CUSTOMERS</h3>
+                <h3>PENDING YOUTHS</h3>
                 <BsPeople className="card_icon" />
               </div>
               <h1 className="number">{pending}</h1>
@@ -87,7 +87,7 @@ function Dashboard() {
 
             <div className="card">
               <div className="card-inner">
-                <h3>ACTIVE CUSTOMERS</h3>
+                <h3>ACTIVE YOUTHS</h3>
                 <BsPeople className="card_icon" />
               </div>
               <h1 className="number">{active}</h1>
@@ -95,7 +95,7 @@ function Dashboard() {
 
             <div className="card">
               <div className="card-inner">
-                <h3>SUSPENDED CUSTOMERS</h3>
+                <h3>SUSPENDED YOUTHS</h3>
                 <BsPeople className="card_icon" />
               </div>
               <h1 className="number">{suspended}</h1>
@@ -103,7 +103,7 @@ function Dashboard() {
 
             <div className="card">
               <div className="card-inner">
-                <h3>REJECTED CUSTOMERS</h3>
+                <h3>REJECTED YOUTHS</h3>
                 <BsPeople className="card_icon" />
               </div>
               <h1 className="number">{rejected}</h1>
