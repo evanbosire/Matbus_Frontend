@@ -37,7 +37,7 @@ function Sidebar({ isOpen, setIsSidebarOpen }) {
           </Link>
           <li onClick={toggleCustomers} className="menu-item">
             <PeopleIcon className="icon" />
-            <span>Customers</span>
+            <span>Youths</span>
             {isCustomersOpen ? (
               <BsChevronDown className="chevron" />
             ) : (
