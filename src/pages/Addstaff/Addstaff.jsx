@@ -59,7 +59,7 @@ const roles = [
   "Service manager",
   "Trainer",
   "Supplier",
-  "Community Service Coordinator ",
+  "Community Service Coordinator",
   "Duties manager",
   "Donor"
 ];
