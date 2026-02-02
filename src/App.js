@@ -11,6 +11,11 @@ import Inactiveemployee from "./pages/Inactiveemployee/Inactiveemployee";
 import Addstaff from "./pages/Addstaff/Addstaff";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import YouthEnrolment from "./pages/YouthEnrolmentReport/YouthEnrolmentReport";
+import SuppliesReport from "./pages/SuppliesReport/Supplies";
+import DonationReport from "./pages/DonationReport/Donation";
+import EventsReport from "./pages/EventsReport/Events";
+
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import { useState } from "react";
@@ -61,6 +66,10 @@ function App() {
                   element={<Inactiveemployee />}
                 />
                 <Route path="/addstaff" element={<Addstaff />} />
+                <Route path="/youth-enrolment" element={<YouthEnrolment />} />
+                <Route path="/supplies-report" element={<SuppliesReport />} />
+                <Route path="/donation-report" element={<DonationReport />} />
+                <Route path="/events-report" element={<EventsReport />} />
               </Routes>
             </div>
           </div>

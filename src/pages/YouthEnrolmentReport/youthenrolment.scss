@@ -1,0 +1,261 @@
+// YouthEnrolment.scss
+
+.youth-enrolment-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50; // darker text for better visibility
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    h1 {
+      color: #2c3e50; // dark heading
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .download-pdf-btn {
+      background-color: #3498db;
+      color: #fff; // keep button text white
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      &:hover:not(:disabled) {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .status-message {
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+
+    &.loading {
+      background-color: #fff8e1;
+      color: #ff8f00;
+      border: 1px solid #ffecb3;
+    }
+
+    &.error {
+      background-color: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
+    }
+  }
+
+  .table-wrapper {
+    background: #fefefe; // light background for better contrast
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .enrolment-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+
+    thead {
+      background-color: #34495e; // dark header
+      tr th {
+        color: #ffffff; // white text is fine over dark background
+        text-align: left;
+        padding: 1rem 1.2rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-right: 1px solid #2c3e50;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ecf0f1;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #f1f3f6; // lighter hover
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 1.2rem 1.2rem;
+          vertical-align: top;
+          border-right: 1px solid #ecf0f1;
+          color: #2c3e50; // dark text
+
+          &:last-child {
+            border-right: none;
+          }
+
+          .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            text-align: center;
+            min-width: 80px;
+          }
+
+          .payment-verified {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+          }
+
+          .payment-pending {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+          }
+
+          .enrolment-completed {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+          }
+
+          .enrolment-active,
+          .enrolment-ongoing {
+            background-color: #d4edda;
+            color: #155724;
+          }
+
+          .enrolment-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+
+          .amount {
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            color: #2c3e50;
+          }
+        }
+      }
+    }
+  }
+
+  .table-footer {
+    padding: 1rem 1.2rem;
+    background-color: #f8f9fa;
+    text-align: right;
+    font-size: 0.95rem;
+    color: #555;
+    border-top: 1px solid #dee2e6;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .youth-enrolment-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .enrolment-table {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .youth-enrolment-container {
+    padding: 1rem;
+
+    .table-header {
+      flex-direction: column;
+      align-items: stretch;
+
+      h1 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .download-pdf-btn {
+        align-self: center;
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    .enrolment-table {
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 1.5rem;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 0.5rem;
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-right: none;
+            border-bottom: 1px solid #eee;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &::before {
+              content: attr(data-label);
+              font-weight: 700;
+              color: #2c3e50; // dark label text
+              margin-right: 1rem;
+              font-size: 0.85rem;
+              min-width: 120px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
